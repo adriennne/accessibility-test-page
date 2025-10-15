@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alt Text Test Page</title>
+</head>
+<body>
+  <h1>Alt Text Accessibility Test</h1>
+
+  <p>This page is used to test whether the accessibility checker can detect missing <code>alt</code> attributes on images.</p>
+
+  <!-- Intentionally missing alt attribute -->
+  <img src="https://via.placeholder.com/150">
+
+  <!-- Properly tagged image for control -->
+  <img src="https://via.placeholder.com/150" alt="Placeholder with alt text">
+
+  <p>If the scanner is working correctly, it should flag the first image as <strong>missing alt text</strong> and ignore the second one.</p>
+</body>
+</html>
