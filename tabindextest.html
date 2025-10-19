@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Positive Tabindex Test</title>
+</head>
+<body>
+  <h1>Accessibility Test – Positive Tabindex (Focus Order)</h1>
+
+  <p>This page demonstrates good and bad examples of tabindex usage for keyboard navigation.</p>
+
+  <h2>Correct Focus Order</h2>
+  <form>
+    <label for="name">Name:</label>
+    <input id="name" type="text" tabindex="0"><br><br>
+
+    <label for="email">Email:</label>
+    <input id="email" type="email" tabindex="0"><br><br>
+
+    <button type="submit" tabindex="0">Submit</button>
+  </form>
+
+  <h2> Incorrect Focus Order (Positive Tabindex)</h2>
+  <p>The following elements use positive tabindex values and should be flagged by the checker.</p>
+
+  <a href="#section1" tabindex="2">Skip ahead</a><br>
+  <button tabindex="5">Click me (tabindex 5)</button><br>
+  <input type="text" placeholder="Out of order input" tabindex="1">
+
+  <h2 id="section1">Section 1</h2>
+  <p>Some random content for tab navigation testing.</p>
+</body>
+</html>
