@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Low Contrast Text Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #ffffff;
+    }
+
+    h1 {
+      color: #222222;
+    }
+
+    .high-contrast {
+      color: #000000;
+      background-color: #ffffff;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .low-contrast {
+      color: #bfbfbf;        
+      background-color: #ffffff; 
+      padding: 10px;
+      border: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <h1>Accessibility Test – Low Contrast Text</h1>
+
+  <p>This page demonstrates text with both sufficient and insufficient colour contrast.</p>
+
+  <h2>✅ High Contrast Example</h2>
+  <p class="high-contrast">
+    This text passes contrast requirements (black on white).
+  </p>
+
+  <h2>❌ Low Contrast Example</h2>
+  <p class="low-contrast">
+    This text is light grey on white and should fail contrast checks.
+  </p>
+</body>
+</html>
