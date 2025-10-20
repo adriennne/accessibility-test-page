@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Language Change Not Marked Test</title>
+</head>
+<body>
+  <h1>Accessibility Test – Language Change Marking</h1>
+
+  <h2> Properly Declared Foreign Language</h2>
+  <p>
+    This sentence contains a properly marked French phrase:
+    <span lang="fr">Bonjour, comment ça va?</span>
+  </p>
+
+  <h2> Missing 'lang' Attribute (Should Trigger Checker)</h2>
+  <p>
+    This sentence contains a French phrase without a <code>lang</code> attribute:
+    <span>Bonjour, comment ça va?</span>
+  </p>
+
+  <h2> Normal English Text</h2>
+  <p>
+    Everything is fine with this paragraph. It is written in English, and no language changes occur here.
+  </p>
+
+</body>
+</html>
