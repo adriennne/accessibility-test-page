@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Resize Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .resizable {
+      font-size: 1.2em;            /* Relative size – passes */
+      width: 50%;
+      border: 1px solid #aaa;
+      padding: 10px;
+      margin-bottom: 30px;
+    }
+
+    .non-resizable {
+      font-size: 14px;             /* Fixed pixel size – fails */
+      width: 200px;                /* Fixed width – fails */
+      height: 50px;                /* Fixed height – fails */
+      overflow: hidden;            /* Hides overflowing text – fails */
+      border: 1px solid #f00;
+      background-color: #ffe6e6;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Accessibility Test – Text Resize and Overflow</h1>
+
+  <p>This page demonstrates good and bad examples of text resize and overflow handling.</p>
+
+  <h2>✅ Resizable Text</h2>
+  <div class="resizable">
+    This text uses relative font sizes and will scale correctly when users zoom or increase text size in their browser.
+  </div>
+
+  <h2>❌ Fixed / Non-Resizable Text</h2>
+  <div class="non-resizable">
+    This text uses a fixed pixel size and hides overflowed content, which makes it fail resize and reflow requirements.
+  </div>
+
+</body>
+</html>
