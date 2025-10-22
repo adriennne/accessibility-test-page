@@ -2,44 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Keyboard Trap Test</title>
+  <title>Keyboard Trap Trigger Test</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 2rem;
     }
 
-    .trap-area {
+    .trap {
       border: 2px solid red;
       padding: 1rem;
       margin-bottom: 2rem;
     }
 
-    .safe-area {
+    .safe {
       border: 2px solid green;
       padding: 1rem;
     }
   </style>
 </head>
 <body>
-  <h1>Keyboard Trap Accessibility Test</h1>
-  <p>This test includes an inline handler that prevents Tab — should be flagged as a keyboard trap.</p>
+  <h1>Keyboard Trap Checker Test</h1>
 
-  <div class="trap-area" id="trapDiv"
-       onkeydown="if(event.key==='Tab'){event.preventDefault();}">
+  <p>This page intentionally includes an inline <code>onkeydown</code> attribute 
+     that calls <code>preventDefault()</code> without mentioning Tab or Escape. 
+     This should trigger the <strong>NO_KEYBOARD_TRAPS</strong> checker.</p>
+
+  <!-- ❌ Should trigger violation -->
+  <div id="trapDiv"
+       class="trap"
+       onkeydown="event.preventDefault(); console.log('Keydown blocked');">
     <h2>❌ Keyboard Trap Section</h2>
-    <p>Try tabbing inside this section — the inline <code>onkeydown</code> prevents default behavior.</p>
-    <input type="text" placeholder="Can't tab away from here">
+    <p>Any key press here prevents default behavior and traps focus.</p>
+    <input type="text" placeholder="Try pressing Tab here">
     <button>Trap Button</button>
   </div>
 
-  <div class="safe-area" id="safeDiv">
-    <h2>✅ Accessible Section</h2>
-    <p>This section has no keyboard trap logic and should not be flagged.</p>
-    <input type="text" placeholder="Tab freely here">
+  <!-- ✅ Should NOT trigger violation -->
+  <div id="safeDiv"
+       class="safe"
+       onkeydown="if(event.key==='Tab'){ event.preventDefault(); }">
+    <h2>✅ Safe Section</h2>
+    <p>This one references 'Tab' so it will NOT be flagged according to the checker’s logic.</p>
+    <input type="text" placeholder="Tab works here">
     <button>Normal Button</button>
   </div>
 </body>
 </html>
-
 
