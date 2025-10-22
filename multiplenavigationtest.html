@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multiple Navigation Options Test</title>
+</head>
+<body>
+  <h1>Accessibility Test – Missing Multiple Navigation Options</h1>
+
+  <p>
+    According to WCAG 2.4.5, users should be able to 
+    locate content using at least two methods — for example, a search feature, site map, or 
+    skip navigation link.
+  </p>
+
+  <!--  This section intentionally violates the rule -->
+  <h2> Failing Example (Should Trigger Violation)</h2>
+  <p>
+    This page has <strong>no search bar</strong>, <strong>no skip navigation links</strong>, and 
+    <strong>no sitemap</strong>. It contains only standard links for demonstration purposes.
+  </p>
+
+  <nav>
+    <ul>
+      <li><a href="#section1">Go to Section 1</a></li>
+      <li><a href="#section2">Go to Section 2</a></li>
+    </ul>
+  </nav>
+
+  <section id="section1">
+    <h3>Section 1</h3>
+    <p>This is the first section of content.</p>
+  </section>
+
+  <section id="section2">
+    <h3>Section 2</h3>
+    <p>This is the second section of content.</p>
+  </section>
+
+</body>
+</html>
