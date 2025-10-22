@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Keyboard Trap Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+
+    .trap-area {
+      border: 2px solid red;
+      padding: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .safe-area {
+      border: 2px solid green;
+      padding: 1rem;
+    }
+
+    input, button {
+      margin: 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Keyboard Trap Accessibility Test</h1>
+
+  <p>This page demonstrates an element that traps keyboard focus (❌ should be flagged) and one that allows normal navigation (✅ should not be flagged).</p>
+
+  <section class="trap-area" aria-label="Trapped Form">
+    <h2>❌ Keyboard Trap Section</h2>
+    <p>Once focus enters this section, the Tab key is blocked to simulate a keyboard trap.</p>
+
+    <input type="text" placeholder="Type here..." id="trapInput">
+    <button id="trapButton">Click me</button>
+
+    <script>
+      const trapArea = document.querySelector('.trap-area');
+      trapArea.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          e.preventDefault(); 
+          alert('Focus is trapped! (Simulated keyboard trap)');
+        }
+      });
+    </script>
+  </section>
+
+  <section class="safe-area" aria-label="Safe Form">
+    <h2>✅ Accessible Section</h2>
+    <p>This section allows keyboard users to navigate freely using Tab and Shift+Tab.</p>
+
+    <input type="text" placeholder="Type here...">
+    <button>Click me</button>
+  </section>
+</body>
+</html>
