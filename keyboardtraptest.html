@@ -28,17 +28,16 @@
      that calls <code>preventDefault()</code> without mentioning Tab or Escape. 
      This should trigger the <strong>NO_KEYBOARD_TRAPS</strong> checker.</p>
 
-  <!-- ❌ Should trigger violation -->
+
   <div id="trapDiv"
        class="trap"
        onkeydown="event.preventDefault(); console.log('Keydown blocked');">
-    <h2>❌ Keyboard Trap Section</h2>
+    <h2> Keyboard Trap Section</h2>
     <p>Any key press here prevents default behavior and traps focus.</p>
     <input type="text" placeholder="Try pressing Tab here">
     <button>Trap Button</button>
   </div>
 
-  <!-- ✅ Should NOT trigger violation -->
   <div id="safeDiv"
        class="safe"
        onkeydown="if(event.key==='Tab'){ event.preventDefault(); }">
@@ -49,4 +48,3 @@
   </div>
 </body>
 </html>
-
