@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Non-Semantic HTML Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .fake-header, .fake-nav, .fake-main, .fake-footer {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 2px solid red;
+    }
+
+    .fake-header { background-color: #ffeaea; }
+    .fake-nav { background-color: #fff4e1; }
+    .fake-main { background-color: #eaf7ff; }
+    .fake-footer { background-color: #e8ffe8; }
+  </style>
+</head>
+<body>
+
+  <h1>Non-Semantic HTML Accessibility Test</h1>
+  <p>This page intentionally uses <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code> elements
+     instead of semantic HTML5 landmarks (like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, etc.)
+     to test the <strong>Non-Semantic HTML</strong> checker.</p>
+
+  <div class="fake-header">
+    <span>Logo</span>
+    <span>Company Name</span>
+  </div>
+
+  <div class="fake-nav">
+    <span><a href="#">Home</a></span> |
+    <span><a href="#">About</a></span> |
+    <span><a href="#">Contact</a></span>
+  </div>
+
+  <div class="fake-main">
+    <div>
+      <h2>Welcome</h2>
+      <p>This section uses generic <code>&lt;div&gt;</code> instead of <code>&lt;main&gt;</code> or <code>&lt;article&gt;</code>.</p>
+    </div>
+  </div>
+
+  <div class="fake-footer">
+    <span>© 2025 My Company</span>
+  </div>
+
+  <hr>
+  <h2>Correct Semantic Example</h2>
+  <header>
+    <h3>Company Name</h3>
+  </header>
+  <nav>
+    <a href="#">Home</a> | <a href="#">About</a> | <a href="#">Contact</a>
+  </nav>
+  <main>
+    <article>
+      <p>This section uses proper semantic tags and should not be flagged.</p>
+    </article>
+  </main>
+  <footer>
+    <p>© 2025 My Company</p>
+  </footer>
+
+</body>
+</html>
