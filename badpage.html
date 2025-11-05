@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Disable zoom (violates reflow/zoom) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Totally Inaccessible Demo</title>
+</head>
+<body style="font-family:Arial;">
+
+  <!-- No skip links, no search, no sitemap; everything built with div/span (non-semantic) -->
+
+  <!-- Low-contrast heading -->
+  <div style="color:#bfbfbf; background-color:#ffffff; font-size:24px; line-height:1;">
+    Welcome to the Worst Website Ever
+  </div>
+
+  <!-- Image without alt -->
+  <div>
+    <img src="https://via.placeholder.com/300x120">
+  </div>
+
+  <!-- Decorative-but-misused ARIA (hidden but focusable) -->
+  <a href="#" aria-hidden="true" tabindex="0" style="display:inline-block; padding:4px;">Hidden but focusable link</a>
+
+  <!-- Non-descriptive / empty links -->
+  <div>
+    For more info <a href="https://example.com" style="outline:0">click here</a>.
+    <a href="#">Read more</a>
+    <a href="#" aria-label=""> </a>
+  </div>
+
+  <!-- Positive tabindex (focus order) and div pretending to be a button -->
+  <div tabindex="3" role="button" style="border:1px solid #ccc; padding:6px;">Fake Button (tabindex 3)</div>
+  <input type="text" placeholder="Your name" tabindex="2" style="font-size:12px; width:200px; height:28px;">
+  <button tabindex="1">Submit</button>
+
+  <!-- Keyboard trap via inline handler (your checker: onkeydown + preventDefault() without 'tab'/'escape') -->
+  <div id="trap"
+       style="border:2px solid red; padding:10px; margin:12px 0;"
+       onkeydown="event.preventDefault(); console.log('trapped');">
+    <div style="font-weight:bold;">Keyboard Trap Area</div>
+    <input type="text" placeholder="Try tabbing…">
+    <button>Inside Trap</button>
+  </div>
+
+  <!-- Text resize & overflow failures (fixed px + overflow hidden) -->
+  <div style="font-size:14px; width:220px; height:48px; overflow:hidden; border:1px solid red; background:#ffe6e6; padding:8px;">
+    This paragraph uses fixed pixel sizes and hides overflowed content which should fail resize/reflow.
+  </div>
+
+  <!-- Text spacing violations (line-height/letter/word spacing too tight) -->
+  <div style="font-size:16px; line-height:1; letter-spacing:0em; word-spacing:0em; width:60%; border:1px solid red; padding:8px; margin-top:10px;">
+    Tight spacing everywhere should be flagged by the line-height/letter/word spacing rules.
+  </div>
+
+  <!-- Another low-contrast block -->
+  <div style="color:#777; background-color:#888; padding:6px; margin-top:10px;">
+    Grey on grey — very hard to read.
+  </div>
+
+  <!-- Language change NOT marked -->
+  <div>
+    Unmarked foreign phrase: <span>Bonjour, comment ça va?</span>
+  </div>
+
+  <!-- Non-semantic layout replacing landmarks -->
+  <div class="fake-header" style="border:1px solid #000; padding:6px; margin-top:10px;">
+    <span>LOGO</span> <span>Company</span>
+  </div>
+  <div class="fake-nav" style="border:1px solid #000; padding:6px;">
+    <span><a href="#">Home</a></span> | <span><a href="#">About</a></span> | <span><a href="#">Contact</a></span>
+  </div>
+  <div class="fake-main" style="border:1px solid #000; padding:6px;">
+    <div>
+      <div style="font-size:12px;">Main content jammed into divs and spans only.</div>
+      <!-- Form with no labels -->
+      <div>
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <input type="submit" value="Go">
+      </div>
+    </div>
+  </div>
+  <div class="fake-footer" style="border:1px solid #000; padding:6px;">
+    <span>© BadCo</span>
+  </div>
+
+  <!-- Autoplay audio without controls -->
+  <audio autoplay>
+    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- onfocus loop (another trap signature your checker looks for) -->
+  <input id="loopFocus" onfocus="this.focus();" value="Focus loops here" style="margin-top:10px;">
+
+  <!-- More contrast + descriptive link failures together -->
+  <p style="color:#9a9a9a; background:#fff; line-height:1;">
+    For details <a href="https://example.com/details">click here</a> or <a href="#">read more</a>.
+  </p>
+</body>
+</html>
