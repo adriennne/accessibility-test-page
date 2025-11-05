@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessible Demo Website</title>
+
+  <style>
+    :root {
+      --primary: #004080;
+      --secondary: #007acc;
+      --background: #ffffff;
+      --text: #111111;
+      --focus: #ffbf00;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    header, nav, main, footer {
+      padding: 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    nav a {
+      color: #fff;
+      margin-right: 1rem;
+    }
+
+    nav a:focus, nav a:hover {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      background-color: var(--secondary);
+    }
+
+    main {
+      padding: 1.5rem;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    button, input, select, textarea {
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 0.5rem;
+      border: 1px solid #555;
+      border-radius: 4px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    button:focus, input:focus, select:focus, textarea:focus {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    a.skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--focus);
+      color: #000;
+      padding: 0.5rem;
+      z-index: 100;
+    }
+
+    a.skip-link:focus {
+      top: 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Skip link for keyboard users -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header role="banner">
+    <h1>Accessible Demo Website</h1>
+    <p>Demonstrating WCAG 2.2 AA/AAA compliance</p>
+  </header>
+
+  <nav aria-label="Main Navigation">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" tabindex="-1">
+    <section id="about">
+      <h2>About This Page</h2>
+      <p>This page demonstrates good accessibility practices including semantic HTML, proper heading hierarchy, descriptive links, keyboard navigation, and sufficient color contrast.</p>
+    </section>
+
+    <section id="gallery">
+      <h2>Gallery</h2>
+      <figure>
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Fpics-of-having-fun&psig=AOvVaw2Xrla5uHFSzH2eynQQxEnl&ust=1762398526116000&source=images&cd=vfe&opi=89978449&ved=0CBYQjRxqFwoTCLjesqKE2pADFQAAAAAdAAAAABAK" alt="Raccoon holding up hands.">
+        <figcaption>Example image with descriptive alternative text.</figcaption>
+      </figure>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form aria-label="Contact form" action="#" method="post">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" required>
+
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Language Example</h2>
+      <p>This paragraph is in English, but here’s a French greeting marked properly: <span lang="fr">Bonjour, comment ça va ?</span></p>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2025 Inclusive Web Co. | <a href="#privacy">Privacy Policy</a></p>
+  </footer>
+
+  <!-- Sitemap for “multiple ways to navigate” rule -->
+  <nav aria-label="Sitemap">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>
